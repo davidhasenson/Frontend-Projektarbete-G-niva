@@ -1,4 +1,5 @@
 # Frontend Projektarbete (G-niva)
 
 Gruppmedlemmar:
-David
+David Hasenson
+Daniel Evensson
