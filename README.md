@@ -3,3 +3,4 @@
 Gruppmedlemmar:
 David
 Daniel Evensson
+Beata Schleisner-Petersen
