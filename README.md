@@ -4,3 +4,4 @@ Gruppmedlemmar:
 David Hasenson
 Daniel Evensson
 Beata Schleisner-Petersen
+Linda Bergin
