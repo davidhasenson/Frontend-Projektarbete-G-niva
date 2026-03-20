@@ -8,6 +8,7 @@ body {
   margin: 50px;
 }
 
+/*Start: Menu Bar Bottom -----------------------------------------------*/
 .menu-bar-bottom {
   width: 100%;
   height: 60px;
@@ -29,6 +30,7 @@ body {
   text-decoration: none;
   margin: 10px;
 }
+/*End: Menu Bar Bottom -----------------------------------------------*/
 
 /*Start: Introduction Section -----------------------------------------------*/
 .store-description {
