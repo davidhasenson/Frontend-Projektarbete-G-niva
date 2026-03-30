@@ -1,12 +1,12 @@
-fetch('https://fakestoreapi.com/products')
-  .then(response => response.json())
-  .then(products => {
-    console.log(products); 
-    const container = document.getElementById('products');
+fetch("https://fakestoreapi.com/products")
+  .then((response) => response.json())
+  .then((products) => {
+    console.log(products);
+    const container = document.getElementById("products");
 
-    products.forEach(product => {
-      const div = document.createElement('div');
-      div.className = 'col';
+    products.forEach((product) => {
+      const div = document.createElement("div");
+      div.className = "col";
       div.innerHTML = `
        <div class="card h-100 text-center bg-info">
        <img src="${product.image}" class="card-img-top p-3 product-img"  style="height: 200px; object-fit: contain;
@@ -21,32 +21,113 @@ fetch('https://fakestoreapi.com/products')
 
       `;
 
-        // image hover effect
-        const img = div.querySelector('.product-img');
-        img.addEventListener('mouseover', () => {
-          img.style.transform = 'scale(1.1)';
-        });
-        img.addEventListener('mouseout', () => {
-          img.style.transform = 'scale(1)';
-        });
+      // image hover effect
+      const img = div.querySelector(".product-img");
+      img.addEventListener("mouseover", () => {
+        img.style.transform = "scale(1.1)";
+      });
+      img.addEventListener("mouseout", () => {
+        img.style.transform = "scale(1)";
+      });
 
-        // order button hover effect
-        const orderButton = div.querySelector('.order-button');
-        orderButton.addEventListener('mouseover', () => {
-          orderButton.style.backgroundColor = '#0056b3';
-          orderButton.transform = 'scale(1.05)';
-        });
-        orderButton.addEventListener('mouseout', () => {
-          orderButton.style.backgroundColor = '#007bff';
-          orderButton.transform = 'scale(1)';
-        });
+      // order button hover effect
+      const orderButton = div.querySelector(".order-button");
+      orderButton.addEventListener("mouseover", () => {
+        orderButton.style.backgroundColor = "#0056b3";
+        orderButton.transform = "scale(1.05)";
+      });
+      orderButton.addEventListener("mouseout", () => {
+        orderButton.style.backgroundColor = "#007bff";
+        orderButton.transform = "scale(1)";
+      });
       container.appendChild(div);
     });
   })
-  .catch(error => {
-    console.error('Something went wrong:', error);
+  .catch((error) => {
+    console.error("Something went wrong:", error);
   });
 
 function orderProduct(id) {
   alert(`You ordered product with id: ${id}`);
 }
+
+function formValidation() {
+  const form = document.querySelector("form");
+
+  form.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const name = document.querySelector("#name");
+    const email = document.querySelector("#email");
+    const tel = document.querySelector("#tel");
+    const streetAddress = document.querySelector("#street-address");
+    const postalCode = document.querySelector("#postal-code");
+    const city = document.querySelector("#city");
+
+    // Name validation
+    if (name.value.length < 2 || name.value.length > 50) {
+      name.classList.add("is-invalid");
+      name.classList.remove("is-valid");
+    } else {
+      name.classList.add("is-valid");
+      name.classList.remove("is-invalid");
+    }
+
+    // Email validation
+    if (
+      !email.value.includes("@") ||
+      email.value.length > 50 ||
+      email.value.length === 0
+    ) {
+      email.classList.add("is-invalid");
+      email.classList.remove("is-valid");
+    } else {
+      email.classList.add("is-valid");
+      email.classList.remove("is-invalid");
+    }
+
+    // Telephone validation
+    const telRegex = /^[0-9\-\(\)]{1,20}$/;
+    if (!telRegex.test(tel.value)) {
+      tel.classList.add("is-invalid");
+      tel.classList.remove("is-valid");
+    } else {
+      tel.classList.add("is-valid");
+      tel.classList.remove("is-invalid");
+    }
+
+    // Street address validation
+    if (
+      streetAddress.value.length < 2 ||
+      streetAddress.value.length > 50 ||
+      streetAddress.value.length === 0
+    ) {
+      streetAddress.classList.add("is-invalid");
+      streetAddress.classList.remove("is-valid");
+    } else {
+      streetAddress.classList.add("is-valid");
+      streetAddress.classList.remove("is-invalid");
+    }
+
+    // Postal code validation
+    const postalCodeRegex = /^[0-9]{5}$/;
+    if (!postalCodeRegex.test(postalCode.value)) {
+      postalCode.classList.add("is-invalid");
+      postalCode.classList.remove("is-valid");
+    } else {
+      postalCode.classList.add("is-valid");
+      postalCode.classList.remove("is-invalid");
+    }
+
+    // City validation
+    if (city.value.length < 2 || city.value.length > 20) {
+      city.classList.add("is-invalid");
+      city.classList.remove("is-valid");
+    } else {
+      city.classList.add("is-valid");
+      city.classList.remove("is-invalid");
+    }
+  });
+}
+
+formValidation();
