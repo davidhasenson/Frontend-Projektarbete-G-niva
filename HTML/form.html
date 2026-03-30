@@ -13,12 +13,27 @@
     <title>Order Form</title>
   </head>
 
+  <!-- 
+Validera alla fält i beställningsformuläret 
+(Måste hanteras via JavaScript. Visa lämpliga felmeddelanden) 
+a.  Namnet är minst 2 tecken och max 50 tecken 
+b.  E-postadressen måste innehålla @ och max 50 tecken  
+c.  Telefonnummer får innehålla siffror, bindestreck och parenteser. Max 20 tecken. 
+
+d.  Leveransadress enligt svensk standard: 
+i.  Gatuadress: Min 2 tecken och Max 50 tecken 
+ii.  Postnummer: Exakt 5 siffror 
+iii.  Ort: Min 2 tecken och Max 20 tecken
+-->
+
   <body>
     <h1 class="form text-primary text-center">Order</h1>
-    <div class="container">
+
+    <div class="container p-3">
       <form novalidate>
         <!-- Name -->
-        <div class="form-floating">
+        <!--Namnet är minst 2 tecken och max 50 tecken -->
+        <div class="form-floating m-3">
           <input
             type="text"
             id="name"
@@ -31,22 +46,9 @@
           <div class="valid-feedback">Valid</div>
         </div>
 
-        <!-- telephone -->
-        <div class="form-floating">
-          <input
-            type="tel"
-            id="tel"
-            class="form-control"
-            placeholder="xxx-xxxxxxx"
-            required
-          />
-          <label for="telefon" class="form-label">Phone number</label>
-          <div class="invalid-feedback">Invalid tel</div>
-          <div class="valid-feedback">Valid tel</div>
-        </div>
-
         <!-- Email -->
-        <div class="form-floating">
+        <!-- E-postadressen måste innehålla @ och max 50 tecken  -->
+        <div class="form-floating m-3">
           <input
             type="email"
             id="email"
@@ -59,22 +61,153 @@
           <div class="valid-feedback">Valid email</div>
         </div>
 
-        <!-- address -->
-        <div class="form-floating">
-          <textarea
-            name="message"
-            rows="5"
+        <!-- telephone -->
+        <!--Telefonnummer får innehålla siffror, bindestreck och parenteser. Max 20 tecken. -->
+        <div class="form-floating m-3">
+          <input
+            type="tel"
+            id="tel"
             class="form-control"
-            cols="30"
-            placeholder="Address"
+            placeholder="xxx-xxxxxxx"
             required
-          ></textarea>
-          <label for="message" class="form-label">Delivery address</label>
+          />
+          <label for="tel" class="form-label">Phone number</label>
+          <div class="invalid-feedback">Invalid tel</div>
+          <div class="valid-feedback">Valid tel</div>
         </div>
 
-        <button>Submit</button>
+        <!-- Street Address -->
+        <!--Gatuadress: Min 2 tecken och Max 50 tecken -->
+        <div class="form-floating m-3">
+          <input
+            type="text"
+            id="street-address"
+            class="form-control"
+            placeholder="Street address"
+            required
+          />
+          <label for="street-address" class="form-label">Street address</label>
+          <div class="invalid-feedback">Invalid</div>
+          <div class="valid-feedback">Valid</div>
+        </div>
+
+        <!-- Postal code -->
+        <!-- Postnummer: Exakt 5 siffror -->
+        <div class="form-floating m-3">
+          <input
+            type="number"
+            id="postal-code"
+            class="form-control"
+            placeholder="Postal code"
+            required
+          />
+          <label for="postal-code" class="form-label">Postal code</label>
+          <div class="invalid-feedback">Invalid</div>
+          <div class="valid-feedback">Valid</div>
+        </div>
+
+        <!-- City -->
+        <!--Ort: Min 2 tecken och Max 20 tecken-->
+        <div class="form-floating m-3">
+          <input
+            type="text"
+            id="city"
+            class="form-control"
+            placeholder="City"
+            required
+          />
+          <label for="city" class="form-label">City</label>
+          <div class="invalid-feedback">Invalid</div>
+          <div class="valid-feedback">Valid</div>
+        </div>
+
+        <div class="m-3">
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
       </form>
     </div>
-    
+
+    <script src="../scripts/script.js"></script>
+
+    <!--
+    <script>
+      const form = document.querySelector("form");
+
+      form.addEventListener("submit", (event) => {
+        event.preventDefault();
+
+        const name = document.querySelector("#name");
+        const email = document.querySelector("#email");
+        const tel = document.querySelector("#tel");
+        const streetAddress = document.querySelector("#street-address");
+        const postalCode = document.querySelector("#postal-code");
+        const city = document.querySelector("#city");
+
+        // Name validation
+        if (name.value.length < 2 || name.value.length > 50) {
+          name.classList.add("is-invalid");
+          name.classList.remove("is-valid");
+        } else {
+          name.classList.add("is-valid");
+          name.classList.remove("is-invalid");
+        }
+
+        // Email validation
+        if (
+          !email.value.includes("@") ||
+          email.value.length > 50 ||
+          email.value.length === 0
+        ) {
+          email.classList.add("is-invalid");
+          email.classList.remove("is-valid");
+        } else {
+          email.classList.add("is-valid");
+          email.classList.remove("is-invalid");
+        }
+
+        // Telephone validation
+        const telRegex = /^[0-9\-\(\)]{1,20}$/;
+        if (!telRegex.test(tel.value)) {
+          tel.classList.add("is-invalid");
+          tel.classList.remove("is-valid");
+        } else {
+          tel.classList.add("is-valid");
+          tel.classList.remove("is-invalid");
+        }
+
+        // Street address validation
+        if (
+          streetAddress.value.length < 2 ||
+          streetAddress.value.length > 50 ||
+          streetAddress.value.length === 0
+        ) {
+          streetAddress.classList.add("is-invalid");
+          streetAddress.classList.remove("is-valid");
+        } else {
+          streetAddress.classList.add("is-valid");
+          streetAddress.classList.remove("is-invalid");
+        }
+
+        // Postal code validation
+        const postalCodeRegex = /^[0-9]{5}$/;
+        if (!postalCodeRegex.test(postalCode.value)) {
+          postalCode.classList.add("is-invalid");
+          postalCode.classList.remove("is-valid");
+        } else {
+          postalCode.classList.add("is-valid");
+          postalCode.classList.remove("is-invalid");
+        }
+
+        // City validation
+        if (city.value.length < 2 || city.value.length > 20) {
+          city.classList.add("is-invalid");
+          city.classList.remove("is-valid");
+        } else {
+          city.classList.add("is-valid");
+          city.classList.remove("is-invalid");
+        }
+      });
+    </script>
+    -->
   </body>
 </html>
