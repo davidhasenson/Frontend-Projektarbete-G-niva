@@ -61,7 +61,6 @@ function orderProduct(id) {
 
 function formValidation() {
   const form = document.querySelector("form");
-  if (!form) return;
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
@@ -173,13 +172,11 @@ function formValidation() {
 
 const savedProductId = localStorage.getItem("selectedProductId");
 if (savedProductId) {
-  const productEl = document.getElementById("product");
-  if (productEl) productEl.value = savedProductId;
+  document.getElementById("product").value = savedProductId;
 }
 const savedProductName = localStorage.getItem("selectedProductName");
 if (savedProductName) {
-  const productNameEl = document.getElementById("product-name");
-  if (productNameEl) productNameEl.textContent = savedProductName;
+  document.getElementById("product-name").textContent = savedProductName;
 }
 
 formValidation();
