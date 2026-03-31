@@ -1,4 +1,3 @@
-
 fetch("https://fakestoreapi.com/products")
   .then((response) => response.json())
   .then((products) => {
@@ -44,10 +43,9 @@ fetch("https://fakestoreapi.com/products")
 
       orderButton.addEventListener("click", () => {
         window.location.href = `html/order-form.html`;
-      //Pass the product id to the order form page
+        //Pass the product id to the order form page
         localStorage.setItem("selectedProductId", product.id);
         localStorage.setItem("selectedProductName", product.title);
-        
       });
 
       container.appendChild(div);
@@ -61,13 +59,13 @@ function orderProduct(id) {
   alert(`You ordered product with id: ${id}`);
 }
 
-
 function formValidation() {
   const form = document.querySelector("form");
+  if (!form) return;
 
   form.addEventListener("submit", (event) => {
     event.preventDefault();
-    
+
     const name = document.querySelector("#name");
     const email = document.querySelector("#email");
     const tel = document.querySelector("#tel");
@@ -75,7 +73,7 @@ function formValidation() {
     const postalCode = document.querySelector("#postal-code");
     const city = document.querySelector("#city");
 
-  let isValid = true; // Assume form is valid until proven otherwise
+    let isValid = true; // Assume form is valid until proven otherwise
 
     // Name validation
     if (name.value.length < 2 || name.value.length > 50) {
@@ -85,7 +83,6 @@ function formValidation() {
     } else {
       name.classList.add("is-valid");
       name.classList.remove("is-invalid");
-      
     }
 
     // Email validation
@@ -96,11 +93,10 @@ function formValidation() {
     ) {
       email.classList.add("is-invalid");
       email.classList.remove("is-valid");
-    isValid = false;
+      isValid = false;
     } else {
       email.classList.add("is-valid");
       email.classList.remove("is-invalid");
-    
     }
 
     // Telephone validation
@@ -112,7 +108,6 @@ function formValidation() {
     } else {
       tel.classList.add("is-valid");
       tel.classList.remove("is-invalid");
-      
     }
 
     // Street address validation
@@ -127,7 +122,6 @@ function formValidation() {
     } else {
       streetAddress.classList.add("is-valid");
       streetAddress.classList.remove("is-invalid");
-      
     }
 
     // Postal code validation
@@ -139,7 +133,6 @@ function formValidation() {
     } else {
       postalCode.classList.add("is-valid");
       postalCode.classList.remove("is-invalid");
-
     }
 
     // City validation
@@ -150,34 +143,43 @@ function formValidation() {
     } else {
       city.classList.add("is-valid");
       city.classList.remove("is-invalid");
-      
     }
-    
+
     if (isValid) {
-      alert("Your order has been placed successfully! "
-      + "\nProduct: " + savedProductName.value
-      + "\nName: " + name.value
-      + "\nEmail: " + email.value
-      + "\nTelephone: " + tel.value 
-      + "\nStreet Address: " + streetAddress.value
-      + "\nPostal Code: " + postalCode.value
-      + "\nCity: " + city.value);
+      alert(
+        "Your order has been placed successfully! " +
+          "\nProduct: " +
+          savedProductName +
+          "\nName: " +
+          name.value +
+          "\nEmail: " +
+          email.value +
+          "\nTelephone: " +
+          tel.value +
+          "\nStreet Address: " +
+          streetAddress.value +
+          "\nPostal Code: " +
+          postalCode.value +
+          "\nCity: " +
+          city.value,
+      );
       form.reset();
     }
     if (!isValid) {
       alert("Please correct the errors in the form before submitting.");
     }
-
-  }); 
+  });
 }
-
-formValidation();
 
 const savedProductId = localStorage.getItem("selectedProductId");
 if (savedProductId) {
-  document.getElementById("product").value = savedProductId;
+  const productEl = document.getElementById("product");
+  if (productEl) productEl.value = savedProductId;
 }
 const savedProductName = localStorage.getItem("selectedProductName");
 if (savedProductName) {
-  document.getElementById("product-name").textContent = savedProductName;
+  const productNameEl = document.getElementById("product-name");
+  if (productNameEl) productNameEl.textContent = savedProductName;
 }
+
+formValidation();

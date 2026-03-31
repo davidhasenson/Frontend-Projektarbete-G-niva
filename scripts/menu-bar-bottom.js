@@ -1,7 +1,7 @@
 const menuItems = [
-  { name: "Start Page", url: "/index.html" },
-  { name: "Order", url: "/html/order-form.html" },
-  { name: "About Us", url: "/html/about-us.html" },
+  { name: "Start Page", url: "index.html" },
+  { name: "Order", url: "html/order-form.html" },
+  { name: "About Us", url: "html/about-us.html" },
 ];
 
 const div = document.createElement("div");

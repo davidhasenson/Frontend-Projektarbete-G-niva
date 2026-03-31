@@ -2,13 +2,13 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <base href="/" />
+    <base href="/Frontend-Projektarbete-G-niva/" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="../styles/bootstrap.css" />
+    <link rel="stylesheet" href="styles/bootstrap.css" />
 
     <!-- Start: Bottom Menu Script/Style-->
-    <link rel="stylesheet" href="/styles/menu-bar-bottom-style.css" />
-    <script defer src="/scripts/menu-bar-bottom.js"></script>
+    <link rel="stylesheet" href="styles/menu-bar-bottom-style.css" />
+    <script defer src="scripts/menu-bar-bottom.js"></script>
     <!-- End: Bottom Menu Script/Style-->
 
     <title>Order Form</title>
@@ -31,7 +31,7 @@ iii.  Ort: Min 2 tecken och Max 20 tecken
     <div class="card w-auto bg-info border-0">
       <div class="card-body">
         <img
-          src="/images/waveshop_logo.svg"
+          src="images/waveshop_logo.svg"
           alt="Waveshop Logo"
           preserveAspectRatio="xMidYMid    slice"
           width="30%"
@@ -43,8 +43,8 @@ iii.  Ort: Min 2 tecken och Max 20 tecken
 
     <div class="container p-3">
       <form novalidate>
-         <!-- Product -->
-           <!-- Produkt: Fylls i automatiskt med det valda objektet från katalogen. -->
+        <!-- Product -->
+        <!-- Produkt: Fylls i automatiskt med det valda objektet från katalogen. -->
         <div class="form-floating m-3">
           <input
             type="text"
@@ -58,6 +58,7 @@ iii.  Ort: Min 2 tecken och Max 20 tecken
           <div class="invalid-feedback">Invalid</div>
           <div class="valid-feedback">Valid</div>
         </div>
+        <p id="product-name" class="ms-3"></p>
 
         <!-- Name -->
         <!--Namnet är minst 2 tecken och max 50 tecken -->
@@ -154,10 +155,8 @@ iii.  Ort: Min 2 tecken och Max 20 tecken
         </div>
       </form>
     </div>
-    
-    
 
-    <script src="../scripts/script.js"></script>
+    <script src="scripts/script.js"></script>
 
     <!--
     <script>
