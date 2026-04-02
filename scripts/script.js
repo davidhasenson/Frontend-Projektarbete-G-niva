@@ -171,7 +171,7 @@ function formValidation() {
   });
 }
 
-/*const savedProductId = localStorage.getItem("selectedProductId");
+const savedProductId = localStorage.getItem("selectedProductId");
 if (savedProductId) {
   document.getElementById("product").value = savedProductId;
 }
