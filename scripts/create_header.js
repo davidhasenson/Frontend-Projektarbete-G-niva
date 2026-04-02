@@ -15,8 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
   logoColumn.className = "col-1";
 
   const logo = document.createElement("img");
-  const basePath = document.getElementById("base-path").href;
-  logo.src = basePath + "images/waveshop_logo.svg";
+  logo.src = "images/waveshop_logo.svg";
   logo.alt = "Waveshop Logo";
 
   logoColumn.appendChild(logo);
