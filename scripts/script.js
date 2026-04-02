@@ -173,8 +173,8 @@ function formValidation() {
 
 /*const savedProductId = localStorage.getItem("selectedProductId");
 if (savedProductId) {
-  document.getElementById("product-id").value = savedProductId;
-}*/
+  document.getElementById("product").value = savedProductId;
+}
 const savedProductName = localStorage.getItem("selectedProductName");
 if (savedProductName) {
   document.getElementById("product-name").textContent = savedProductName;
