@@ -1,4 +1,5 @@
 function formValidation() {
+  console.log("order-form.js loaded");
   const form = document.querySelector("form");
 
   form.addEventListener("submit", (event) => {
@@ -113,10 +114,9 @@ function formValidation() {
 if (savedProductId) {
   document.getElementById("product").value = savedProductId;
 }*/
-const savedProductName = localStorage.getItem("selectedProductName");
-const productNameElement = document.getElementById("product-name");
-if (savedProductName && productNameElement) {
-  productNameElement.value = savedProductName;
+const savedProductName = localStorage.getItem("selectedProductName") || "Unknown Product";
+if (savedProductName) {
+  document.getElementById("product-name").value = savedProductName;
 }
 
 formValidation();
