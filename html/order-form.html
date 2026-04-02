@@ -2,10 +2,12 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <base href="/Frontend-Projektarbete-G-niva/" />
+    <!--Base Start-->
+    <base href="" id="base-path" />
+    <script defer src="scripts/base_config.js"></script>
+    <!--Base End-->
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="styles/bootstrap.css" />
-    <script defer src="scripts/script.js"></script>
 
     <!-- Header Menu Dropdown Menu Start -->
     <script defer src="scripts/create_header.js"></script>
@@ -30,9 +32,11 @@ iii.  Ort: Min 2 tecken och Max 20 tecken
 
   <!-- -->
   <body class="bg-info">
-    <!-- side bar start -->
-
-    <!-- side bar end -->
+    <div class="card w-auto bg-info border-0">
+      <div class="card-body">
+        <img src="images/waveshop_logo.svg" alt="Waveshop Logo" />
+      </div>
+    </div>
 
     <h1 class="form text-center">Order</h1>
 
@@ -44,13 +48,13 @@ iii.  Ort: Min 2 tecken och Max 20 tecken
         <div class="form-floating m-3">
           <input
             type="text"
-            id="product"
+            id="product-name"
             class="form-control"
             placeholder="item"
             required
             readonly
           />
-          <label for="product" class="form-label">Number of product</label>
+          <label for="product-name" class="form-label">Product name</label>
           <div class="invalid-feedback">Invalid</div>
           <div class="valid-feedback">Valid</div>
         </div>
